@@ -1,0 +1,50 @@
+{% load staticfiles %}
+
+  {% block head %}
+
+     <title>iBlog.com</title>
+
+  {% endblock %}
+
+</head>
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="{% static 'accounts/style  .css' %}">
+
+<body>
+
+    <div class="page-header">
+    <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+
+    <h1>iBlog</h1>
+    </div>
+
+  <br>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+        <div class="container-fluid">
+
+          <ul class="nav navbar-nav navbar-right">
+          <div class="navbar-header">
+          <a class="navbar-brand" href="/account/logout">Logout</a>
+          </div>
+
+      </div><!--/.nav-collapse -->
+
+    </div><!--/.container-fluid -->
+
+  {% block body %}
+
+    {% block content %}
+      <h1>New post</h1>
+      <form method="POST" class="post-form">{% csrf_token %}
+          {{ form.as_p }}
+           <button type="submit" href="accounts/post_list" class="save btn btn-default">Save</button>
+      </form>
+    {% endblock %}
+
+  {% endblock %}
+
+</body>
